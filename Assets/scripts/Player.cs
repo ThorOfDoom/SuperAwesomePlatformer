@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
             }
         }
         rigidbody.AddForce (new Vector2 (force.x, force.y));
-        Debug.Log (grounded + "|" + absoluteVelocity.y);
+        //Debug.Log (grounded + "|" + absoluteVelocity.y);
     }
 
     // Update is called once per frame
@@ -111,7 +111,7 @@ public class Player : MonoBehaviour
         if (controller.moving.y > 0 && grounded) {
             jumping = true;
         }
-        if (controller.moving.y == 2) {
+        if (controller.moving.y == 2 && !grounded) {
             jumping = false;
         }
     }
