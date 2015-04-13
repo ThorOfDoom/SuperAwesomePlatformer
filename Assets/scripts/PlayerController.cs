@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown ("up")) {
             moving.y = 1;
         }
-        
         if (Input.GetKeyUp ("up")) {
             moving.y = 2;
         }
