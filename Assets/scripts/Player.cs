@@ -84,25 +84,35 @@ public class Player : MonoBehaviour
          * keep accelrating til the player liftsthe key, the maxheight is reached or the time for thatran out
          */
 
-        if (shouldJump || airTime != 0.0f) {
-            if (!grounded) {
-                airTime += Time.fixedDeltaTime;
-                //asdf
-            }
-            if (airTime < maxAirTime) {
-                //force.y = jumpForce;
-                rigidbody.AddForce (new Vector2 (0.0f, jumpForce - jumpForce * ((1 / maxAirTime) * airTime)));
-            } 
-            if (airTime > maxAirTime || (!shouldJump && airTime > minAirTime)) {
-                shouldJump = false;
-                airTime = 0.0f;
-            }
+        if (shouldJump && grounded) {
+            isJumping = true;
         }
 
+        if (isJumping) {
+            if (!grounded) {
+                airTime += Time.fixedDeltaTime;
+                Debug.Log (airTime);
+            } 
+            if ((airTime < maxAirTime && shouldJump)) {
+                DoJump ();
+            } else {
+                isJumping = false;
+                shouldJump = false;
+                airTime = 0.0f;
+                Debug.Log ("stop");
+            }
+        } 
         Debug.DrawLine (oldPos, rigidbody.position, Color.green, 5.0f);
         oldPos = rigidbody.position;
 
         rigidbody.AddForce (new Vector2 (force.x, force.y));
+        //rigidbody.velocity = new Vector2 (force.x, rigidbody.velocity.y);
+    }
+
+    void DoJump ()
+    {
+        Debug.Log ("jump");
+        rigidbody.velocity = new Vector2 (rigidbody.velocity.x, jumpForce);
     }
 
     // Update is called once per frame
@@ -123,7 +133,7 @@ public class Player : MonoBehaviour
         if (controller.moving.y == 1 && grounded) {
             shouldJump = true;
         }
-        if (controller.moving.y == 2) {
+        if (controller.moving.y == 2 && isJumping) {
             shouldJump = false;
         }
     }

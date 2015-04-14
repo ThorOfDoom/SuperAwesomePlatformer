@@ -544,11 +544,11 @@ MonoBehaviour:
   maxVelocity: {x: 9, y: 999}
   grounded: 0
   airSpeedMultiplier: .300000012
-  jumpForce: 100
+  jumpForce: 18
   reactivityPercentage: 1
   changedDirection: 0
-  maxAirTime: .300000012
-  minAirTime: .100000001
+  maxAirTime: .150000006
+  minAirTime: .0500000007
   groundCollisionLayerMask:
     serializedVersion: 2
     m_Bits: 256
