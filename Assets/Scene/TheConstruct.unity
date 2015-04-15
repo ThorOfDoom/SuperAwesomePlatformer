@@ -179,7 +179,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 361924736}
   m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: 572f54e425c3446f1b05700236357543, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
@@ -541,7 +541,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runningForce: 30
-  maxVelocity: {x: 9, y: 999}
+  maxRunningSpeed: 9
+  maxWalkingSpeed: 3
   grounded: 0
   airSpeedMultiplier: .300000012
   jumpForce: 18
@@ -565,6 +566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moving: {x: 0, y: 0}
+  running: 0
 --- !u!1 &1379736630
 GameObject:
   m_ObjectHideFlags: 0
